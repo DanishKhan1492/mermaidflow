@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  height: 100%;
+  overflow: hidden;
+}
+
+/* ── Light theme overrides ──────────────────────────────────────────────── */
+html.light body {
+  background-color: #f9fafb;
+  color: #111827;
+}
+
+html.light .bg-gray-950 { background-color: #ffffff; }
+html.light .bg-gray-900 { background-color: #f9fafb; }
+html.light .bg-gray-800 { background-color: #f3f4f6; }
+html.light .border-gray-700 { border-color: #e5e7eb; }
+html.light .border-gray-700\/60 { border-color: rgba(229, 231, 235, 0.6); }
+html.light .text-gray-100 { color: #111827; }
+html.light .text-gray-200 { color: #1f2937; }
+html.light .text-gray-300 { color: #374151; }
+html.light .text-gray-400 { color: #6b7280; }
+html.light .text-gray-500 { color: #9ca3af; }
+html.light .text-gray-600 { color: #d1d5db; }
+
+/* Ensure Monaco editor cursor is visible in dark mode */
+.monaco-editor .cursor {
+  background-color: #a78bfa !important;
+}
+
+/* Mermaid SVG overrides — ensure SVG fills its container */
+#diagram-container svg {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+/* Focus-visible for keyboard users */
+*:focus-visible {
+  outline: 2px solid #8b5cf6;
+  outline-offset: 2px;
+}
+
+/* Smooth transitions for theme changes */
+body, header, aside, nav {
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}

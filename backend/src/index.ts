@@ -1,0 +1,28 @@
+import express from 'express';
+import cors from 'cors';
+import { generateRouter } from './routes/generate';
+
+const app = express();
+const PORT = process.env.PORT || 3001;
+
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL || 'http://localhost:3000',
+    methods: ['GET', 'POST'],
+  })
+);
+
+// Increase limit for binary GIF responses encoded as base64
+app.use(express.json({ limit: '2mb' }));
+
+app.get('/health', (_req, res) => {
+  res.json({ status: 'ok', timestamp: new Date().toISOString() });
+});
+
+app.use('/api', generateRouter);
+
+app.listen(PORT, () => {
+  console.log(`MermaidFlow backend running on port ${PORT}`);
+});
+
+export default app;
