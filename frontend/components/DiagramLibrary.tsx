@@ -76,25 +76,25 @@ export function DiagramLibrary({ open, onClose }: DiagramLibraryProps) {
   if (!open) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm" onClick={onClose}>
+    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/60 backdrop-blur-sm" onClick={onClose}>
       <div
-        className="w-full max-w-lg max-h-[80vh] bg-gray-900 border border-gray-700 rounded-xl shadow-2xl flex flex-col overflow-hidden"
+        className="w-full sm:max-w-lg h-[85vh] sm:h-auto sm:max-h-[80vh] bg-gray-900 border-t sm:border border-gray-700 rounded-t-xl sm:rounded-xl shadow-2xl flex flex-col overflow-hidden"
         onClick={(e) => e.stopPropagation()}
         role="dialog"
         aria-label="Saved diagrams"
       >
         {/* Header */}
-        <div className="flex items-center gap-3 px-5 py-3.5 border-b border-gray-700/60 shrink-0">
-          <BookOpen size={18} className="text-violet-400" />
-          <h2 className="text-sm font-bold text-gray-200 uppercase tracking-wider flex-1">Saved Diagrams</h2>
+        <div className="flex items-center gap-2 sm:gap-3 px-3 sm:px-5 py-3 sm:py-3.5 border-b border-gray-700/60 shrink-0">
+          <BookOpen size={16} className="text-violet-400 sm:w-[18px] sm:h-[18px] shrink-0" />
+          <h2 className="text-xs sm:text-sm font-bold text-gray-200 uppercase tracking-wider flex-1">Saved Diagrams</h2>
           <button
             onClick={handleSaveCurrent}
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium bg-violet-600 text-white hover:bg-violet-500 transition-colors"
+            className="flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1.5 rounded-lg text-[10px] sm:text-xs font-medium bg-violet-600 text-white hover:bg-violet-500 transition-colors shrink-0"
             aria-label="Save current diagram"
           >
-            <Save size={13} /> Save Current
+            <Save size={12} className="sm:w-[13px] sm:h-[13px]" /> Save
           </button>
-          <button onClick={onClose} className="p-1.5 rounded-lg text-gray-400 hover:text-gray-200 hover:bg-gray-700 transition-colors" aria-label="Close library">
+          <button onClick={onClose} className="p-1.5 rounded-lg text-gray-400 hover:text-gray-200 hover:bg-gray-700 transition-colors shrink-0" aria-label="Close library">
             <X size={18} />
           </button>
         </div>

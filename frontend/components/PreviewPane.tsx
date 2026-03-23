@@ -241,38 +241,38 @@ export function PreviewPane({ onExpandEditor }: PreviewPaneProps) {
   return (
     <div className="flex flex-col h-full bg-gray-950">
       {/* Pane header */}
-      <div className="flex items-center gap-2 px-4 py-2.5 bg-gray-800 border-b border-gray-700 shrink-0">
+      <div className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-4 py-2 sm:py-2.5 bg-gray-800 border-b border-gray-700 shrink-0 overflow-x-auto">
         {/* Show editor button — placed BEFORE the label so it's on the left */}
         {onExpandEditor && (
           <button
             onClick={onExpandEditor}
             title="Show editor"
             aria-label="Show editor"
-            className="p-2 rounded text-gray-400 hover:text-gray-200 hover:bg-gray-700 transition-colors focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:outline-none"
+            className="p-1.5 sm:p-2 rounded text-gray-400 hover:text-gray-200 hover:bg-gray-700 transition-colors focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:outline-none shrink-0"
           >
-            <PanelLeftOpen size={18} />
+            <PanelLeftOpen size={16} className="sm:w-[18px] sm:h-[18px]" />
           </button>
         )}
 
-        <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
-        <span className="text-xs font-semibold text-gray-300 uppercase tracking-wider">
-          Live Preview
+        <span className="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-emerald-400 shrink-0" />
+        <span className="text-[10px] sm:text-xs font-semibold text-gray-300 uppercase tracking-wider whitespace-nowrap shrink-0">
+          Preview
         </span>
 
-        <div className="ml-auto flex items-center gap-1.5">
+        <div className="ml-auto flex items-center gap-1 sm:gap-1.5 shrink-0">
           {/* Step-through toggle */}
           <button
             onClick={() => { setStepMode(!stepMode); stepReset(); setPlaying(false); }}
             title={stepMode ? 'Exit step mode (E)' : 'Enter step mode (E)'}
             aria-label={stepMode ? 'Exit step mode' : 'Enter step mode'}
             aria-pressed={stepMode}
-            className={`p-2 rounded transition-colors focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:outline-none ${
+            className={`p-1.5 sm:p-2 rounded transition-colors focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:outline-none ${
               stepMode
                 ? 'bg-violet-600 text-white'
                 : 'text-gray-400 hover:text-gray-200 hover:bg-gray-700'
             }`}
           >
-            {stepMode ? <EyeOff size={18} /> : <Eye size={18} />}
+            {stepMode ? <EyeOff size={16} className="sm:w-[18px] sm:h-[18px]" /> : <Eye size={16} className="sm:w-[18px] sm:h-[18px]" />}
           </button>
 
           {/* Play/Pause — only visible in step mode */}
@@ -280,27 +280,27 @@ export function PreviewPane({ onExpandEditor }: PreviewPaneProps) {
             <button
               onClick={togglePlay}
               title={playing ? 'Pause animation' : 'Play animation'}
-              className={`p-2 rounded transition-colors ${
+              className={`p-1.5 sm:p-2 rounded transition-colors ${
                 playing
                   ? 'bg-emerald-600 text-white'
                   : 'text-gray-400 hover:text-gray-200 hover:bg-gray-700'
               }`}
             >
-              {playing ? <Pause size={18} /> : <Play size={18} />}
+              {playing ? <Pause size={16} className="sm:w-[18px] sm:h-[18px]" /> : <Play size={16} className="sm:w-[18px] sm:h-[18px]" />}
             </button>
           )}
 
-          <div className="w-px h-5 bg-gray-700 mx-1" />
+          <div className="w-px h-4 sm:h-5 bg-gray-700 mx-0.5 sm:mx-1" />
 
           {/* Zoom controls */}
-          <button onClick={zoomOut} title="Zoom out (-)" aria-label="Zoom out" className="p-2 rounded text-gray-400 hover:text-gray-200 hover:bg-gray-700 transition-colors focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:outline-none">
-            <ZoomOut size={18} />
+          <button onClick={zoomOut} title="Zoom out (-)" aria-label="Zoom out" className="p-1.5 sm:p-2 rounded text-gray-400 hover:text-gray-200 hover:bg-gray-700 transition-colors focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:outline-none">
+            <ZoomOut size={16} className="sm:w-[18px] sm:h-[18px]" />
           </button>
-          <span className="text-sm text-gray-500 min-w-[3.5rem] text-center tabular-nums" aria-label={`Zoom ${Math.round(zoom * 100)}%`}>{Math.round(zoom * 100)}%</span>
-          <button onClick={zoomIn} title="Zoom in (+)" aria-label="Zoom in" className="p-2 rounded text-gray-400 hover:text-gray-200 hover:bg-gray-700 transition-colors focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:outline-none">
-            <ZoomIn size={18} />
+          <span className="text-xs sm:text-sm text-gray-500 min-w-[2.5rem] sm:min-w-[3.5rem] text-center tabular-nums" aria-label={`Zoom ${Math.round(zoom * 100)}%`}>{Math.round(zoom * 100)}%</span>
+          <button onClick={zoomIn} title="Zoom in (+)" aria-label="Zoom in" className="p-1.5 sm:p-2 rounded text-gray-400 hover:text-gray-200 hover:bg-gray-700 transition-colors focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:outline-none">
+            <ZoomIn size={16} className="sm:w-[18px] sm:h-[18px]" />
           </button>
-          <button onClick={zoomReset} title="Reset zoom (0)" aria-label="Reset zoom" className="p-2 rounded text-gray-400 hover:text-gray-200 hover:bg-gray-700 transition-colors focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:outline-none">
+          <button onClick={zoomReset} title="Reset zoom (0)" aria-label="Reset zoom" className="hidden sm:inline-flex p-1.5 sm:p-2 rounded text-gray-400 hover:text-gray-200 hover:bg-gray-700 transition-colors focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:outline-none">
             <RotateCcw size={16} />
           </button>
         </div>
@@ -308,35 +308,35 @@ export function PreviewPane({ onExpandEditor }: PreviewPaneProps) {
 
       {/* Step controls bar */}
       {stepMode && (
-        <div className="flex items-center justify-center gap-3 px-4 py-2.5 bg-gray-900 border-b border-gray-700/60 shrink-0">
+        <div className="flex items-center justify-center gap-2 sm:gap-3 px-2 sm:px-4 py-2 sm:py-2.5 bg-gray-900 border-b border-gray-700/60 shrink-0 overflow-x-auto">
           <button
             onClick={() => { setPlaying(false); stepPrev(); }}
             disabled={stepIndex <= 0}
-            className="flex items-center gap-1 px-3 py-1.5 rounded text-sm font-medium bg-gray-700 text-gray-200 hover:bg-gray-600 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+            className="flex items-center gap-0.5 sm:gap-1 px-2 sm:px-3 py-1 sm:py-1.5 rounded text-xs sm:text-sm font-medium bg-gray-700 text-gray-200 hover:bg-gray-600 disabled:opacity-30 disabled:cursor-not-allowed transition-colors shrink-0"
           >
-            <ChevronLeft size={15} /> Prev
+            <ChevronLeft size={14} className="sm:w-[15px] sm:h-[15px]" /> Prev
           </button>
-          <span className="text-sm text-gray-400 tabular-nums min-w-[5rem] text-center" role="status" aria-live="polite">
+          <span className="text-xs sm:text-sm text-gray-400 tabular-nums min-w-[3.5rem] sm:min-w-[5rem] text-center shrink-0" role="status" aria-live="polite">
             {stepIndex + 1} / {stepTotal}
           </span>
           <button
             onClick={() => { setPlaying(false); stepNext(); }}
             disabled={stepIndex >= stepTotal - 1}
-            className="flex items-center gap-1 px-3 py-1.5 rounded text-sm font-medium bg-violet-600 text-white hover:bg-violet-500 disabled:opacity-30 disabled:cursor-not-allowed transition-colors"
+            className="flex items-center gap-0.5 sm:gap-1 px-2 sm:px-3 py-1 sm:py-1.5 rounded text-xs sm:text-sm font-medium bg-violet-600 text-white hover:bg-violet-500 disabled:opacity-30 disabled:cursor-not-allowed transition-colors shrink-0"
           >
-            Next <ChevronRight size={15} />
+            Next <ChevronRight size={14} className="sm:w-[15px] sm:h-[15px]" />
           </button>
 
-          <div className="w-px h-5 bg-gray-700/60 mx-1" />
+          <div className="w-px h-4 sm:h-5 bg-gray-700/60 mx-0.5 sm:mx-1 shrink-0" />
 
           {/* Speed control */}
-          <div className="flex items-center gap-1">
-            <Gauge size={14} className="text-gray-500" />
+          <div className="flex items-center gap-0.5 sm:gap-1 shrink-0">
+            <Gauge size={12} className="text-gray-500 sm:w-[14px] sm:h-[14px]" />
             {([0.5, 1, 2] as SpeedOption[]).map((s) => (
               <button
                 key={s}
                 onClick={() => setPlaybackSpeed(s)}
-                className={`px-2 py-1 rounded text-xs font-medium transition-colors ${
+                className={`px-1.5 sm:px-2 py-0.5 sm:py-1 rounded text-[10px] sm:text-xs font-medium transition-colors ${
                   playbackSpeed === s
                     ? 'bg-violet-600 text-white'
                     : 'bg-gray-700/60 text-gray-400 hover:bg-gray-600 hover:text-gray-200'
@@ -354,13 +354,13 @@ export function PreviewPane({ onExpandEditor }: PreviewPaneProps) {
             title={looping ? 'Looping (click to stop at end)' : 'Stop at end (click to loop)'}
             aria-label={looping ? 'Disable loop' : 'Enable loop'}
             aria-pressed={looping}
-            className={`p-1.5 rounded transition-colors ${
+            className={`p-1 sm:p-1.5 rounded transition-colors shrink-0 ${
               looping
                 ? 'text-violet-400 bg-violet-600/20'
                 : 'text-gray-500 hover:text-gray-300 bg-gray-700/40'
             }`}
           >
-            <Repeat size={14} />
+            <Repeat size={12} className="sm:w-[14px] sm:h-[14px]" />
           </button>
         </div>
       )}
@@ -368,7 +368,7 @@ export function PreviewPane({ onExpandEditor }: PreviewPaneProps) {
       {/* Diagram viewport */}
       <div
         id="diagram-container"
-        className="flex-1 overflow-auto p-6"
+        className="flex-1 overflow-auto p-3 sm:p-6"
       >
         {error && !stepMode ? (
           <div className="text-red-400 text-sm bg-red-950/40 rounded-xl p-5 border border-red-800/60 max-w-lg w-full">

@@ -113,23 +113,23 @@ export function EditorPane({ onToggleCollapse }: EditorPaneProps) {
       )}
 
       {/* Pane header */}
-      <div className="flex items-center gap-2 px-4 py-2 bg-gray-800 border-b border-gray-700 shrink-0">
-        <span className="w-2 h-2 rounded-full bg-violet-400" />
-        <span className="text-xs font-semibold text-gray-300 uppercase tracking-wider">
+      <div className="flex items-center gap-1.5 sm:gap-2 px-2 sm:px-4 py-2 bg-gray-800 border-b border-gray-700 shrink-0 overflow-x-auto">
+        <span className="w-2 h-2 rounded-full bg-violet-400 shrink-0" />
+        <span className="text-[10px] sm:text-xs font-semibold text-gray-300 uppercase tracking-wider whitespace-nowrap shrink-0">
           Mermaid Code
         </span>
 
         {/* Template picker */}
-        <div className="relative ml-2" ref={dropdownRef}>
+        <div className="relative ml-1 sm:ml-2 shrink-0" ref={dropdownRef}>
           <button
             onClick={() => setTemplateOpen((o) => !o)}
-            className="flex items-center gap-1.5 px-2.5 py-1 rounded text-xs font-medium bg-gray-700/70 text-gray-300 hover:bg-gray-600 hover:text-gray-100 transition-colors"
+            className="flex items-center gap-1 sm:gap-1.5 px-2 sm:px-2.5 py-1 rounded text-[10px] sm:text-xs font-medium bg-gray-700/70 text-gray-300 hover:bg-gray-600 hover:text-gray-100 transition-colors"
             aria-label="Choose template"
             aria-expanded={templateOpen}
           >
-            <FileCode2 size={13} />
-            Templates
-            <ChevronDown size={12} className={`transition-transform ${templateOpen ? 'rotate-180' : ''}`} />
+            <FileCode2 size={12} className="sm:w-[13px] sm:h-[13px]" />
+            <span className="hidden xs:inline">Templates</span>
+            <ChevronDown size={11} className={`transition-transform sm:w-3 sm:h-3 ${templateOpen ? 'rotate-180' : ''}`} />
           </button>
 
           {templateOpen && (
@@ -156,22 +156,22 @@ export function EditorPane({ onToggleCollapse }: EditorPaneProps) {
         </div>
 
         {/* Undo / Redo */}
-        <div className="flex items-center gap-0.5 ml-1">
-          <button onClick={handleUndo} title="Undo (Ctrl+Z)" className="p-1.5 rounded text-gray-500 hover:text-gray-200 hover:bg-gray-700 transition-colors" aria-label="Undo">
-            <Undo2 size={14} />
+        <div className="flex items-center gap-0.5 ml-0.5 sm:ml-1 shrink-0">
+          <button onClick={handleUndo} title="Undo (Ctrl+Z)" className="p-1 sm:p-1.5 rounded text-gray-500 hover:text-gray-200 hover:bg-gray-700 transition-colors" aria-label="Undo">
+            <Undo2 size={13} className="sm:w-[14px] sm:h-[14px]" />
           </button>
-          <button onClick={handleRedo} title="Redo (Ctrl+Shift+Z)" className="p-1.5 rounded text-gray-500 hover:text-gray-200 hover:bg-gray-700 transition-colors" aria-label="Redo">
-            <Redo2 size={14} />
+          <button onClick={handleRedo} title="Redo (Ctrl+Shift+Z)" className="p-1 sm:p-1.5 rounded text-gray-500 hover:text-gray-200 hover:bg-gray-700 transition-colors" aria-label="Redo">
+            <Redo2 size={13} className="sm:w-[14px] sm:h-[14px]" />
           </button>
         </div>
 
         {/* Import / Export .mmd */}
-        <div className="flex items-center gap-0.5 ml-auto">
-          <button onClick={handleImportFile} title="Import .mmd file" className="p-1.5 rounded text-gray-500 hover:text-gray-200 hover:bg-gray-700 transition-colors" aria-label="Import file">
-            <Upload size={14} />
+        <div className="flex items-center gap-0.5 ml-auto shrink-0">
+          <button onClick={handleImportFile} title="Import .mmd file" className="p-1 sm:p-1.5 rounded text-gray-500 hover:text-gray-200 hover:bg-gray-700 transition-colors" aria-label="Import file">
+            <Upload size={13} className="sm:w-[14px] sm:h-[14px]" />
           </button>
-          <button onClick={handleExportMmd} title="Export as .mmd" className="p-1.5 rounded text-gray-500 hover:text-gray-200 hover:bg-gray-700 transition-colors" aria-label="Export .mmd file">
-            <Download size={14} />
+          <button onClick={handleExportMmd} title="Export as .mmd" className="p-1 sm:p-1.5 rounded text-gray-500 hover:text-gray-200 hover:bg-gray-700 transition-colors" aria-label="Export .mmd file">
+            <Download size={13} className="sm:w-[14px] sm:h-[14px]" />
           </button>
 
           {onToggleCollapse && (
