@@ -5,22 +5,70 @@ import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
+const SITE_URL = 'https://mermaidflow.dnlabz.cloud';
+const TITLE = 'MermaidFlow — Animate Mermaid Diagrams & Export as GIF';
+const DESCRIPTION =
+  'Free online tool to animate Mermaid.js diagrams step-by-step and export as animated GIF, SVG, or PNG. Live editor, shareable links, diagram library, and one-click export.';
+
 export const metadata: Metadata = {
-  title: 'MermaidFlow — Mermaid.js to Animated GIF',
-  description:
-    'Convert Mermaid.js diagrams into frame-by-frame animated GIFs with a single click. Share diagrams, export as GIF/SVG/PNG.',
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: TITLE,
+    template: '%s | MermaidFlow',
+  },
+  description: DESCRIPTION,
+  applicationName: 'MermaidFlow',
+  generator: 'Next.js',
+  referrer: 'origin-when-cross-origin',
+  creator: 'MermaidFlow',
+  publisher: 'MermaidFlow',
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
-    title: 'MermaidFlow — Mermaid.js to Animated GIF',
-    description: 'Convert Mermaid.js diagrams into animated GIFs, SVGs, and PNGs. Step-through animation, shareable links, and more.',
+    title: TITLE,
+    description: DESCRIPTION,
+    url: SITE_URL,
     type: 'website',
     siteName: 'MermaidFlow',
+    locale: 'en_US',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'MermaidFlow — Mermaid.js to Animated GIF',
-    description: 'Convert Mermaid.js diagrams into animated GIFs with a single click.',
+    title: TITLE,
+    description: DESCRIPTION,
   },
-  keywords: ['mermaid', 'diagram', 'gif', 'animation', 'flowchart', 'sequence diagram', 'svg', 'png'],
+  keywords: [
+    'mermaid diagram animator',
+    'mermaid to gif',
+    'animate mermaid diagram',
+    'mermaid.js gif export',
+    'mermaid diagram gif maker',
+    'animated flowchart',
+    'sequence diagram animation',
+    'mermaid online editor',
+    'diagram to gif converter',
+    'mermaid live editor',
+    'export mermaid as gif',
+    'export mermaid as svg',
+    'export mermaid as png',
+    'flowchart animation tool',
+    'animated diagram generator',
+    'mermaid step by step animation',
+    'mermaid diagram tool',
+    'free diagram animator',
+  ],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
 };
 
 export default function RootLayout({
@@ -30,6 +78,39 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="dark">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'WebApplication',
+              name: 'MermaidFlow',
+              url: SITE_URL,
+              description: DESCRIPTION,
+              applicationCategory: 'DesignApplication',
+              operatingSystem: 'All',
+              browserRequirements: 'Requires a modern web browser',
+              offers: {
+                '@type': 'Offer',
+                price: '0',
+                priceCurrency: 'USD',
+              },
+              featureList: [
+                'Animate Mermaid.js diagrams step-by-step',
+                'Export diagrams as animated GIF',
+                'Export diagrams as SVG or PNG',
+                'Live Monaco code editor with syntax highlighting',
+                'Shareable diagram links',
+                'Diagram library with favorites',
+                'Pre-built Mermaid templates',
+                'Light and dark mode',
+                'Mobile responsive layout',
+              ],
+            }),
+          }}
+        />
+      </head>
       <body className={`${inter.className} bg-gray-950 text-gray-100 dark:bg-gray-950 dark:text-gray-100`}>
         {children}
         <Toaster

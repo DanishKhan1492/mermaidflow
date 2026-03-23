@@ -5,7 +5,7 @@
 <h1 align="center">MermaidFlow</h1>
 
 <p align="center">
-  <strong>Turn Mermaid.js diagrams into animated GIFs — right from your browser.</strong>
+  <strong>Turn Mermaid.js diagrams into animated GIFs - right from your browser.</strong>
 </p>
 
 <p align="center">

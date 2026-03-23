@@ -3,9 +3,7 @@ version: '3.9'
 services:
   # ── GIF Generation Engine (Node.js / Express + Puppeteer + FFmpeg) ──────────
   backend:
-    build:
-      context: ./backend
-      dockerfile: Dockerfile
+    image: muhammaddanishkhan/mermaidflow-be:latest
     container_name: mermaidflow-backend
     restart: unless-stopped
     ports:
@@ -17,7 +15,6 @@ services:
       PUPPETEER_EXECUTABLE_PATH: /usr/bin/chromium
       PUPPETEER_SKIP_DOWNLOAD: 'true'
       PUPPETEER_SKIP_CHROMIUM_DOWNLOAD: 'true'
-    # Chrome needs /dev/shm larger than the Docker default (64 MB)
     shm_size: '1gb'
     deploy:
       resources:
@@ -35,11 +32,7 @@ services:
 
   # ── Next.js Frontend ─────────────────────────────────────────────────────────
   frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
-      args:
-        API_URL: http://backend:3001
+    image: muhammaddanishkhan/mermaidflow-fe:latest
     container_name: mermaidflow-frontend
     restart: unless-stopped
     ports:
